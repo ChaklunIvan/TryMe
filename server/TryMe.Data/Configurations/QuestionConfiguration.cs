@@ -11,15 +11,16 @@ namespace TryMe.Data.Configurations
             builder.ToTable("Questions")
                    .HasKey(q => q.Id);
 
-            builder.Property(q => q.Answer)
+            builder.Property(q => q.Description)
                    .IsRequired()
-                   .HasMaxLength(220);
-
-            builder.Property(q => q.IsCorrect)
-                   .HasColumnType("boolean");
+                   .HasMaxLength(400);
 
             builder.HasOne(q => q.Test)
-                   .WithMany(t => t.Questions);
+                   .WithMany(t => t.Questions)
+                   .HasForeignKey(q => q.TestId);
+
+            builder.HasMany(q => q.Answers)
+                   .WithOne(a => a.Question);
         }
     }
 }

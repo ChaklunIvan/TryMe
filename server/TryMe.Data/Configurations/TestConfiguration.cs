@@ -19,7 +19,8 @@ namespace TryMe.Data.Configurations
                    .HasMaxLength(80);
 
             builder.HasOne(t => t.User)
-                   .WithMany(u => u.Tests);
+                   .WithMany(u => u.Tests)
+                   .HasForeignKey(t => t.UserId);
 
             builder.HasMany(t => t.Questions)
                    .WithOne(q => q.Test);

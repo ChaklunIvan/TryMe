@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TryMe.Data.Configurations;
+using TryMe.Data.Extensions;
 using TryMe.Domain.Entities;
 
 namespace TryMe.Data
@@ -9,6 +10,7 @@ namespace TryMe.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Test> Tests { get; set; }
         public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
 
         public ApplicationDbContext(DbContextOptions options)
             : base(options) { }
@@ -20,6 +22,9 @@ namespace TryMe.Data
             builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new TestConfiguration());
             builder.ApplyConfiguration(new QuestionConfiguration());
+            builder.ApplyConfiguration(new AnswerConfiguration());
+
+            builder.Seed();
         }
     }
 }

@@ -29,6 +29,7 @@ namespace TryMe.Controllers
         }
 
         [HttpGet("{testId}/Questions")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<QuestionResponse>>> GetQuestionListAsync(int testId, CancellationToken cancellationToken)
         {
             var questions = await _testService.GetQuestionsAsync(testId, cancellationToken);

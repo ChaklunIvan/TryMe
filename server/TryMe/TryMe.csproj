@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hellang.Middleware.ProblemDetails" Version="6.5.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -18,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TryMe.Data\TryMe.Data.csproj" />
     <ProjectReference Include="..\TryMe.Domain\TryMe.Domain.csproj" />
+    <ProjectReference Include="..\TryMe.Services\TryMe.Services.csproj" />
   </ItemGroup>
 
 </Project>

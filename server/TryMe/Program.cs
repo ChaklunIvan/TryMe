@@ -3,12 +3,10 @@ using TryMe.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers()
-       .Services.AddAuthentication("CookieAuthentication")
-       .AddCookie("CookieAuthentication", options =>
-       {
-           options.Cookie.Name = "CookieAuthentication";
-       })
-       .Services.ConfigureSqliteContext(builder.Configuration);
+       .Services.ConfigureCookieAuthentication()
+       .ConfigureSqliteContext(builder.Configuration)
+       .ConfigureProblemDetails(builder.Environment)
+       .AddServices();
 
 var app = builder.Build();
 

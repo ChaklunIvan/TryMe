@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Security.Claims;
+using TryMe.Domain.Constans;
 using TryMe.Domain.Requests;
 
 namespace TryMe.Controllers
@@ -11,22 +12,19 @@ namespace TryMe.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        [HttpPost]
-        public async Task<ActionResult> LoginAsync([FromBody] Credential credentials)
+        private readonly Services.Interfaces.IAuthenticationService _authenticationService;
+
+        public AuthenticationController(Services.Interfaces.IAuthenticationService authenticationService)
         {
-            if (credentials.UserName == "admin" && credentials.Password == "password")
-            {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, "admin"),
-                };
+            _authenticationService = authenticationService;
+        }
 
-                var identity = new ClaimsIdentity(claims, "CookieAuthentication");
+        [HttpPost]
+        public async Task<ActionResult> LoginAsync([FromBody] Credential credentials, CancellationToken cancellationToken)
+        {
+            var claimPrincipal = await _authenticationService.ValidateUserAsync(credentials, cancellationToken);
 
-                var claimPrincipal = new ClaimsPrincipal(identity);
-
-                await HttpContext.SignInAsync("CookieAuthentication", claimPrincipal);
-            }
+            await HttpContext.SignInAsync(CookieConstans.AuthenticationScheme, claimPrincipal);
 
             return Ok();
         }

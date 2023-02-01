@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryMe", "TryMe.csproj", "{AF9F3360-BD55-49F4-AEDA-74F2DEAC8EEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TryMe", "TryMe.csproj", "{AF9F3360-BD55-49F4-AEDA-74F2DEAC8EEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryMe.Domain", "..\TryMe.Domain\TryMe.Domain.csproj", "{2BEFAF2A-46C8-4F74-B82F-9E6BCD418BC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TryMe.Domain", "..\TryMe.Domain\TryMe.Domain.csproj", "{2BEFAF2A-46C8-4F74-B82F-9E6BCD418BC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryMe.Data", "..\TryMe.Data\TryMe.Data.csproj", "{16E965A6-1E3E-4E37-92FE-A04630392FCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TryMe.Data", "..\TryMe.Data\TryMe.Data.csproj", "{16E965A6-1E3E-4E37-92FE-A04630392FCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryMe.Services", "..\TryMe.Services\TryMe.Services.csproj", "{9B3BA6D5-1425-4D4A-8A29-177A3A8ED65E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{16E965A6-1E3E-4E37-92FE-A04630392FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16E965A6-1E3E-4E37-92FE-A04630392FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16E965A6-1E3E-4E37-92FE-A04630392FCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B3BA6D5-1425-4D4A-8A29-177A3A8ED65E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B3BA6D5-1425-4D4A-8A29-177A3A8ED65E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B3BA6D5-1425-4D4A-8A29-177A3A8ED65E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B3BA6D5-1425-4D4A-8A29-177A3A8ED65E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

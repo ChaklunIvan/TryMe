@@ -8,7 +8,7 @@ namespace TryMe.Extensions
         public static IServiceCollection ConfigureSqliteContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(opts =>
-            opts.UseSqlite(configuration.GetConnectionString("Sqlite")));
+            opts.UseLazyLoadingProxies().UseSqlite(configuration.GetConnectionString("Sqlite")));
             return services;
         }
     }

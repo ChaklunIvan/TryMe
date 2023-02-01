@@ -11,7 +11,7 @@ namespace TryMe.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20230201111150_seed")]
-    partial class seed
+    partial class Seed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

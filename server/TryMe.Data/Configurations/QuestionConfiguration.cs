@@ -18,9 +18,6 @@ namespace TryMe.Data.Configurations
             builder.HasOne(q => q.Test)
                    .WithMany(t => t.Questions)
                    .HasForeignKey(q => q.TestId);
-
-            builder.HasMany(q => q.Answers)
-                   .WithOne(a => a.Question);
         }
     }
 }

@@ -5,6 +5,7 @@ namespace TryMe.Services.Interfaces
 {
     public interface ITestService
     {
-        Task<IEnumerable<TestResponse>> GetTestListAsync(int UserId, CancellationToken cancellationToken);
+        Task<IEnumerable<TestResponse>> GetTestsAsync(int userId, CancellationToken cancellationToken);
+        Task<IEnumerable<QuestionResponse>> GetQuestionsAsync(int testId, CancellationToken cancellationToken);
     }
 }

@@ -9,11 +9,11 @@ namespace TryMe.Data.Configurations
         public void Configure(EntityTypeBuilder<Answer> builder)
         {
             builder.ToTable("Answers")
-                   .HasKey(a => a.Id);
+                   .HasIndex(a => a.Id);
 
             builder.Property(a => a.Body)
                    .IsRequired()
-                   .HasMaxLength(800);
+                   .HasMaxLength(400);
 
             builder.Property(a => a.IsCorrect)
                    .IsRequired()

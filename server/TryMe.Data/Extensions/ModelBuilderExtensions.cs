@@ -20,7 +20,7 @@ namespace TryMe.Data.Extensions
                 new Test { Id = 6, UserId = 2, Title = "Typescript", Description = "This is a test for those who learn typescript and want to test their knowledge" });
 
             builder.Entity<Question>().HasData(
-                new Question { Id = 1, TestId = 1, Description = "What difference between abstract class and interface?" },
+                new Question { Id = 1, TestId = 1, Description = "What difference between abstract class and interface?",  },
                 new Question { Id = 2, TestId = 1, Description = "How CLR allocates memory for an object?" },
                 new Question { Id = 3, TestId = 2, Description = "What is lazy loading?" },
                 new Question { Id = 4, TestId = 2, Description = "Do you need to use Repository pattern with Entity Framework?" },

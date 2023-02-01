@@ -18,12 +18,20 @@ namespace TryMe.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<TestResponse>> GetTestListAsync(int UserId, CancellationToken cancellationToken)
+        public async Task<IEnumerable<TestResponse>> GetTestsAsync(int userId, CancellationToken cancellationToken)
         {
-            var tests = await _context.Tests.Where(t => t.UserId == UserId).ToListAsync(cancellationToken);
+            var tests = await _context.Tests.Where(t => t.UserId == userId).ToListAsync(cancellationToken);
             var testsResponse = _mapper.Map<IEnumerable<TestResponse>>(tests);
 
             return testsResponse;
+        }
+
+        public async Task<IEnumerable<QuestionResponse>> GetQuestionsAsync(int testId, CancellationToken cancellationToken)
+        {
+            var questions = await _context.Questions.Where(q => q.TestId == testId).ToListAsync(cancellationToken);
+            var questionsResponse = _mapper.Map<IEnumerable<QuestionResponse>>(questions);
+
+            return questionsResponse;
         }
     }
 }

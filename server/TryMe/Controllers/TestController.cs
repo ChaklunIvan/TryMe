@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TryMe.Domain.Entities;
+using TryMe.Domain.Responses;
 using TryMe.Services.Interfaces;
 
 namespace TryMe.Controllers
@@ -19,12 +20,20 @@ namespace TryMe.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<IEnumerable<Test>>> GetTestListAsync(CancellationToken cancellationToken)
+        public async Task<ActionResult<IEnumerable<TestResponse>>> GetTestListAsync(CancellationToken cancellationToken)
         {
             var userId = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
-            var tests = await _testService.GetTestListAsync(int.Parse(userId), cancellationToken);
+            var tests = await _testService.GetTestsAsync(int.Parse(userId), cancellationToken);
 
             return Ok(tests);
+        }
+
+        [HttpGet("{testId}/Questions")]
+        public async Task<ActionResult<IEnumerable<QuestionResponse>>> GetQuestionListAsync(int testId, CancellationToken cancellationToken)
+        {
+            var questions = await _testService.GetQuestionsAsync(testId, cancellationToken);
+
+            return Ok(questions);
         }
     }
 }

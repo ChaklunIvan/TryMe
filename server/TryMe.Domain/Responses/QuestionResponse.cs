@@ -3,6 +3,6 @@
     public class QuestionResponse
     {
         public string? Description { get; set; }
-        public IEnumerable<AnswerResponse> Answers { get; set; }
+        public IEnumerable<AnswerResponse>? Answers { get; set; }
     }
 }

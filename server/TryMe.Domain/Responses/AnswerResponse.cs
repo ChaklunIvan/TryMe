@@ -2,7 +2,7 @@
 {
     public class AnswerResponse
     {
-        public string Body { get; set; }
+        public string? Body { get; set; }
         public bool IsCorrect { get; set; }
     }
 }

@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TryMe.Domain", "..\TryMe.Do
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TryMe.Data", "..\TryMe.Data\TryMe.Data.csproj", "{16E965A6-1E3E-4E37-92FE-A04630392FCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryMe.Services", "..\TryMe.Services\TryMe.Services.csproj", "{9B3BA6D5-1425-4D4A-8A29-177A3A8ED65E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TryMe.Services", "..\TryMe.Services\TryMe.Services.csproj", "{9B3BA6D5-1425-4D4A-8A29-177A3A8ED65E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9655767A-0879-4E15-AFC5-E839136E9910}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

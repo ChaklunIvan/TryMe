@@ -20,6 +20,7 @@ namespace TryMe.Services
         public async Task<ClaimsPrincipal> ValidateUserAsync(Credential credentials, CancellationToken cancellationToken)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == credentials.UserName, cancellationToken);
+
             if (user == null || !BCrypt.Net.BCrypt.Verify(credentials.Password, user.PasswordHash))
             {
                 throw new InvalidUserException("User not found or incorect password");
@@ -27,7 +28,8 @@ namespace TryMe.Services
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim("UserId", user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.UserName)
             };
 
             var identity = new ClaimsIdentity(claims, CookieConstans.AuthenticationScheme);

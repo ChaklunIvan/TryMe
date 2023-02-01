@@ -6,7 +6,8 @@ builder.Services.AddControllers()
        .Services.ConfigureCookieAuthentication()
        .ConfigureSqliteContext(builder.Configuration)
        .ConfigureProblemDetails(builder.Environment)
-       .AddServices();
+       .AddServices()
+       .AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 

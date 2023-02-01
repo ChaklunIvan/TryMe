@@ -8,6 +8,7 @@ namespace TryMe.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<ITestService, TestService>();
 
             return services;
         }

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -24,9 +26,22 @@ namespace TryMe.Controllers
         {
             var claimPrincipal = await _authenticationService.ValidateUserAsync(credentials, cancellationToken);
 
-            await HttpContext.SignInAsync(CookieConstans.AuthenticationScheme, claimPrincipal);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimPrincipal, new AuthenticationProperties
+            {
+                IsPersistent = true,
+                AllowRefresh = true,
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
+            });
 
             return Ok();
+        }
+
+        [HttpGet("user")]
+        [Authorize]
+        public IActionResult GetUser()
+        {
+            var userClaims = User.Claims.Select(c => c.Value).ToList();
+            return Ok(userClaims);
         }
     }
 }

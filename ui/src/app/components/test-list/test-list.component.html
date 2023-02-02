@@ -1,0 +1,9 @@
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel title="TestTitle">
+    <ng-template ngbPanelContent>
+      Test desc
+      <button type="button" class="btn btn-primary" (click)="getTests()" style="margin: auto">Sign In</button>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
+<router-outlet></router-outlet>

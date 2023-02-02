@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using TryMe.Data;
 using TryMe.Domain.Constans;
@@ -32,7 +33,7 @@ namespace TryMe.Services
                 new Claim(ClaimTypes.Name, user.UserName)
             };
 
-            var identity = new ClaimsIdentity(claims, CookieConstans.AuthenticationScheme);
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
             return new ClaimsPrincipal(identity);
         }

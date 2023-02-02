@@ -18,6 +18,5 @@ export class LoginComponent {
 
   login(){
     this.loginService.authenticate(this.credentials).subscribe();
-    this.router.navigate(["test-list"]);
   }
 }

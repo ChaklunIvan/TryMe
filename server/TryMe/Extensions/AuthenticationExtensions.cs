@@ -9,6 +9,7 @@ namespace TryMe.Extensions
             services.AddAuthentication(CookieConstans.AuthenticationScheme).AddCookie(CookieConstans.AuthenticationScheme, options =>
             {
                 options.Cookie.Name = CookieConstans.CookieName;
+                options.Cookie.SameSite = SameSiteMode.None;
             });
 
             return services;

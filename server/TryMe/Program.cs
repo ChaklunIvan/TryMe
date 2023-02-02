@@ -12,9 +12,10 @@ builder.Services.AddControllers()
 var app = builder.Build();
 
 app.UseCors(x => x
-    .AllowAnyOrigin()
+    .WithOrigins("http://localhost:4200")
     .AllowAnyMethod()
-    .AllowAnyHeader());
+    .AllowAnyHeader()
+    .AllowCredentials());
 
 app.UseRouting();
 

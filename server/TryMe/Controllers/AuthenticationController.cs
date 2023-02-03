@@ -22,7 +22,7 @@ namespace TryMe.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> LoginAsync([FromBody] Credential credentials, CancellationToken cancellationToken)
+        public async Task<ActionResult<bool>> LoginAsync([FromBody] Credential credentials, CancellationToken cancellationToken)
         {
             var claimPrincipal = await _authenticationService.ValidateUserAsync(credentials, cancellationToken);
 
@@ -36,12 +36,17 @@ namespace TryMe.Controllers
             return Ok();
         }
 
-        [HttpGet("user")]
-        [Authorize]
-        public IActionResult GetUser()
+        [HttpGet]
+        public async Task<ActionResult<bool>> IsAuthenticated()
         {
-            var userClaims = User.Claims.Select(c => c.Value).ToList();
-            return Ok(userClaims);
+            bool? isAuthenticated = false;
+
+            await Task.Run(() =>
+            {
+                isAuthenticated = HttpContext.User.Identity?.IsAuthenticated;
+            });
+
+            return Ok(isAuthenticated);
         }
     }
 }

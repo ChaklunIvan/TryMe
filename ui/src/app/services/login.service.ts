@@ -11,7 +11,7 @@ const httpOptions = {
 };
 
 const url = "https://localhost:7276";
-const endPoint = "/api/Authentication"
+const authentication = "/api/Authentication"
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +21,14 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   authenticate(credentials: Credential) : Observable<any>{
-      return this.http.post(url + endPoint, credentials, httpOptions )
+      return this.http.post(url + authentication, credentials, httpOptions )
         .pipe(
           catchError(this.handleError)
         );
+  }
+
+  isAuthenticated(){
+      return this.http.get(url + authentication, httpOptions)
   }
 
   private handleError(error: HttpErrorResponse) {

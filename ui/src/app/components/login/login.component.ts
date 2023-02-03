@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
   constructor(private loginService: LoginService, private router: Router) {}
 
   credentials: Credential = {
@@ -16,7 +17,31 @@ export class LoginComponent {
     password: ''
   }
 
+  isAuthenticated: boolean = false;
+  showWarning: boolean = false;
+
+  tooltip: string = "Credentials for login:<br>" +
+                    "UserName: James007<br>" +
+                    "Password: Bond7<br>" +
+                    "UserName: ShteinerG42<br>" +
+                    "Password: Gate4"
+
   login(){
-    this.loginService.authenticate(this.credentials).subscribe();
+    this.loginService.authenticate(this.credentials).subscribe(
+      () => {},
+      () => {this.showWarning = true;},
+      () => {this.loginService.isAuthenticated().subscribe(
+        (data: any) => {this.isAuthenticated = data},
+        () => {},
+        () => this.routeToTests());
+    });
+  }
+  routeToTests(){
+    if(this.isAuthenticated){
+      this.router.navigate(['test-list'])
+    }
+    else {
+      this.showWarning = true;
+    }
   }
 }

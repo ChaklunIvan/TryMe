@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
 import { TestListComponent } from './components/test-list/test-list.component';
+import { QuestionsComponent } from './components/questions/questions.component';
+import { ResultComponent } from './components/result/result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    TestListComponent
+    TestListComponent,
+    QuestionsComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

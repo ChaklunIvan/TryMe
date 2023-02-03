@@ -1,0 +1,20 @@
+<div class="container d-flex justify-content-center" style="border-bottom: 1px solid blue">
+  <h1>{{questions[questionIndex].description}}</h1>
+</div>
+<div class="container my-3" >
+  <input class="form-check-input mx-2" type="checkbox" [value]="questions[questionIndex].answers[0].isCorrect" (change)="isChecked($event)" id="answerOne">
+  <label class="form-check-label " for="answerOne">
+    {{questions[questionIndex].answers[0].body}}
+  </label>
+</div>
+<div class="container my-3">
+  <input class="form-check-input mx-2" type="checkbox" [value]="questions[questionIndex].answers[1].isCorrect" (change)="isChecked($event)" id="answerTwo">
+  <label class="form-check-label " for="answerTwo">
+    {{questions[questionIndex].answers[1].body}}
+  </label>
+</div>
+<div class="container d-flex justify-content-center my-3" >
+  <button class="btn btn-primary my-3" (click)="nextQuestion()">Next</button>
+</div>
+<router-outlet></router-outlet>
+

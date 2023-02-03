@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TestService} from "../../services/test.service";
 import {Test} from "../../interfaces/test";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-test-list',
@@ -11,7 +12,7 @@ export class TestListComponent implements OnInit{
 
   tests: Test[] = [];
 
-  constructor(private testService: TestService) {
+  constructor(private testService: TestService, private router: Router) {
   }
 
   agreeToStart: boolean = false;
@@ -27,11 +28,11 @@ export class TestListComponent implements OnInit{
   }
 
   proceedIsDisabled(){
-    if(this.agreeToStart == true){
-      return false;
+    if(this.agreeToStart == false){
+      return true;
     }
     else {
-      return true;
+      return false;
     }
   }
 
@@ -44,4 +45,8 @@ export class TestListComponent implements OnInit{
     }
   }
 
+  routeToQuestions(testId: number){
+    debugger
+    this.router.navigate(['${testi}'])
+  }
 }

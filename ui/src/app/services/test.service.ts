@@ -21,7 +21,17 @@ export class TestService {
   constructor(private http: HttpClient) { }
 
   getTestList() {
-    return this.http.get(url + endPoint, httpOptions);
+    return this.http.get(url + endPoint, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getQuestionList(testId: number){
+    return this.http.get(url + endPoint + "/" + testId + "/Questions", httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   private handleError(error: HttpErrorResponse) {

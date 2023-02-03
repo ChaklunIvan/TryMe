@@ -14,6 +14,7 @@ namespace TryMe.Extensions
                 options.Events.OnRedirectToLogin = (context) =>
                 {
                     context.Response.StatusCode = 401;
+                    context.Response.WriteAsync("Unauthorized");
                     return Task.CompletedTask;
                 };
                 options.Cookie.SecurePolicy = CookieSecurePolicy.Always;

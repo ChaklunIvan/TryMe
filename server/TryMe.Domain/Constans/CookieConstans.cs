@@ -2,7 +2,6 @@
 {
     public static class CookieConstans
     {
-        public const string AuthenticationScheme = "CookieAuthentication";
         public const string CookieName = "Authenticate";
     }
 }

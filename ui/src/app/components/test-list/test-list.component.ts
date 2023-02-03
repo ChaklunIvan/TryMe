@@ -14,13 +14,34 @@ export class TestListComponent implements OnInit{
   constructor(private testService: TestService) {
   }
 
+  agreeToStart: boolean = false;
+
   ngOnInit(): void {
+    this.getTests()
   }
 
   getTests(){
     this.testService.getTestList().subscribe((result: any) =>{
       this.tests = result
     })
+  }
+
+  proceedIsDisabled(){
+    if(this.agreeToStart == true){
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  changeAgree(){
+    if(this.agreeToStart == true){
+      this.agreeToStart = false;
+    }
+    else {
+      this.agreeToStart = true;
+    }
   }
 
 }

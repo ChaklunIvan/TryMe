@@ -1,8 +1,18 @@
-<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-  <ngb-panel title="TestTitle">
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" *ngFor="let test of tests">
+  <ngb-panel [title]="test.title">
     <ng-template ngbPanelContent>
-      Test desc
-      <button type="button" class="btn btn-primary" (click)="getTests()" style="margin: auto">Sign In</button>
+      {{test.description}}
+      <div class="row">
+        <div class="col-6 form-check my-3">
+          <input class="form-check-input" type="checkbox" (click)="changeAgree()" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            I agree to start
+          </label>
+        </div>
+        <div class="col-6 text-end">
+          <button class="btn btn-primary" [disabled]="this.proceedIsDisabled()">Proceed</button>
+        </div>
+      </div>
     </ng-template>
   </ngb-panel>
 </ngb-accordion>

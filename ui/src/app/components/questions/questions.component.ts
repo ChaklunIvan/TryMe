@@ -10,7 +10,6 @@ import {Question} from "../../interfaces/question";
 })
 export class QuestionsComponent implements OnInit{
 
-
   questions: Question[] = [];
   questionIndex: number = 0;
   testResult: number = 0;
@@ -39,15 +38,36 @@ export class QuestionsComponent implements OnInit{
     else{
       this.questionIndex ++;
     }
-    document.querySelectorAll('.form-check-input').forEach(_checkbox=>{
+    document.querySelectorAll('.form-check-input')
+      .forEach(_checkbox=>{
       (<HTMLInputElement>_checkbox).checked = false;
     });
   }
 
   isChecked(event: any){
-    debugger
     if(event.target.value == "true" && event.target.checked){
+      this.disableCheckBox();
       ++this.testResult;
     }
+    if(!event.target.checked){
+      this.enableCheckBox();
+      --this.testResult;
+    }
+  }
+
+  private disableCheckBox(){
+    document.querySelectorAll('.form-check-input')
+      .forEach(_checkbox=>{
+        if(!(<HTMLInputElement>_checkbox).checked){
+          (<HTMLInputElement>_checkbox).disabled = true;
+        }
+      });
+  }
+
+  private enableCheckBox(){
+    document.querySelectorAll('.form-check-input')
+      .forEach(_checkbox=>{
+          (<HTMLInputElement>_checkbox).disabled = false;
+      });
   }
 }
